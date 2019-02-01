@@ -13,6 +13,7 @@ import d2VueFiltersDate from '@d2-projects/vue-filters-date'
 import pluginError from '@/plugin/error'
 import pluginLog from '@/plugin/log'
 import pluginOpen from '@/plugin/open'
+import D2Crud from '@d2-projects/d2-crud'
 
 export default {
   async install (Vue, options) {
@@ -32,6 +33,7 @@ export default {
     // 过滤器 日期模块
     Vue.use(d2VueFiltersDate)
     // 插件
+    Vue.use(D2Crud)
     Vue.use(pluginError)
     Vue.use(pluginLog)
     Vue.use(pluginOpen)
