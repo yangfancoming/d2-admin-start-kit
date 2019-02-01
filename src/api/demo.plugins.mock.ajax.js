@@ -13,3 +13,10 @@ export function testGoat () {
         method: 'get'
     })
 }
+
+export function test1 () {
+    return request({
+        url: '/api/mock/test1',
+        method: 'get'
+    })
+}
