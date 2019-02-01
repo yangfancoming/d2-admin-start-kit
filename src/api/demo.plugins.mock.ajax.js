@@ -7,3 +7,9 @@ export function PluginMocksAjax () {
         method: 'get'
     })
 }
+export function testGoat () {
+    return request({
+        url: '/demo/plugins/mock/test',
+        method: 'get'
+    })
+}

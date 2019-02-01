@@ -1,8 +1,6 @@
 <template>
     <d2-container :filename="filename">
         <template slot="header">Page 2 header</template>
-
-
         <d2-crud
                 ref="d2Crud"
                 :columns="columns"
@@ -25,6 +23,7 @@
             <el-button slot="header" style="margin-bottom: 5px" @click="addRow">新增</el-button>
             <el-button slot="header" style="margin-bottom: 5px" @click="addRowWithNewTemplate">使用自定义模板新增</el-button>
             <el-button slot="header" style="margin-bottom: 5px" @click="editRowWithNewTemplate">使用自定义模板编辑第三行</el-button>
+
         </d2-crud>
 
 
@@ -69,9 +68,7 @@
                 rowHandle: {
                     columnHeader: '操作',
                     edit: {
-                        icon: 'el-icon-edit',
-                        text: '编辑',
-                        size: 'small',
+                        icon: 'el-icon-edit',text: '编辑',size: 'small',
                         show (index, row) {
                             if (row.showEditButton) {
                                 return true
@@ -86,9 +83,7 @@
                         }
                     },
                     remove: {
-                        icon: 'el-icon-delete',
-                        size: 'small',
-                        fixed: 'right',
+                        icon: 'el-icon-delete',size: 'small',fixed: 'right',
                         confirm: true,
                         show (index, row) {
                             if (row.showRemoveButton) {
@@ -104,36 +99,27 @@
                         }
                     },
                     custom: [
-                        {
-                            text: '自定义按钮',
-                            type: 'warning',
-                            size: 'small',
-                            emit: 'custom-emit-1'
-                        }
+                        { text: '自定义',type: 'warning',size: 'small',emit: 'custom-emit-1' }
                     ]
                 },
                 addTemplate: {
-                    date: { title: '日期',value: '2016-05-05'},
+                    date: { title: '日期',value: '2019-02-01'},
                     name: { title: '姓名', value: '王小虎'},
-                    address: { title: '地址', value: '上海市普陀区金沙江路 1520 弄'}
+                    address: { title: '地址', value: '抚顺市东洲111区永嘉路'},
+                    picker: { title: '测试picker', value: '2019-02-01',component:{ name:'el-date-picker',span:12}},
+                    select: { title: '测试select', value: '辽宁省',component:{ name:'el-select',offset:4}},
                 },
                 editTemplate: {
                     date: { title: '日期',value: '' },
                     name: { title: '姓名', value: ''},
                     address: { title: '地址',value: ''},
                     forbidEdit: {
-                        title: '禁用按钮',
-                        value: false,
-                        component: {
-                            show: false
-                        }
+                        title: '禁用按钮',value: false,
+                        component: { show: false }
                     },
                     showEditButton: {
-                        title: '显示按钮',
-                        value: true,
-                        component: {
-                            show: false
-                        }
+                        title: '显示按钮',value: true,
+                        component: { show: false }
                     }
                 },
                 formOptions: {
@@ -157,18 +143,16 @@
             },
             // 普通的新增
             addRow () {
-                this.$refs.d2Crud.showDialog({
-                    mode: 'add'
-                })
+                this.$refs.d2Crud.showDialog({ mode: 'add' })
             },
             // 传入自定义模板的新增
             addRowWithNewTemplate () {
                 this.$refs.d2Crud.showDialog({
                     mode: 'add',
                     template: {
-                        name: { title: '姓名',value: ''},
-                        value1: { title: '新属性1',value: ''} ,
-                        value2: { title: '新属性2',value: ''}
+                        name: { title: '姓名',value: '1'},
+                        value1: { title: '新属性1',value: '2'} ,
+                        value2: { title: '新属性2',value: '3'}
                     }
                 })
             },
