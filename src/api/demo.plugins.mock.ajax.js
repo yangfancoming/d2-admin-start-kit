@@ -26,3 +26,9 @@ export function test2 () {
         method: 'get'
     })
 }
+export function test3 () {
+    return request({
+        url: '/mock/test3',
+        method: 'get'
+    })
+}
