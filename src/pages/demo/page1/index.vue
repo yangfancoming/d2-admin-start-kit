@@ -12,6 +12,18 @@
             <el-button size="mini" type="primary"  @click="ajax3">
                 <d2-icon name="paper-plane"/> 请求 mock 数据3
             </el-button>
+
+            <el-button size="mini" type="primary"  @click="ajax4">
+                请求 mock 数据4
+            </el-button>
+            <el-select v-model="value" placeholder="请选择">
+                <el-option  v-for="item in options" :key="item.value" :label="item.label" :value="item.value"/>
+            </el-select>
+
+            <el-button size="mini" type="primary"  @click="ajax5">
+                请求 mock 数据5
+            </el-button>
+
         </div>
         <el-table  v-bind="table" style="width: 100%">
             <el-table-column  v-for="(item, index) in table.columns" :key="index" :prop="item.prop" :label="item.label"/>
@@ -26,13 +38,8 @@
         data () {
             return {
                 filename: __filename,
-                table: {
-                    columns: [],
-                    data: [],
-                    size: 'mini',
-                    stripe: true,
-                    border: true
-                }
+                options:'', value: '',
+                table: { columns: [],data: [],size: 'mini',stripe: true,border: true }
             }
         },
         methods: {
@@ -66,7 +73,18 @@
                     .catch(() => {
                         // 错误情况
                     })
-            }
+            },
+            ajax4 () {
+                mockService.test2().then(res => {
+                    this.options = res.options.select;
+                    this.value = res.options.value;
+                }) .catch(() => {})
+            },
+            ajax5 () {
+                mockService.test3().then(res => {
+                    console.log(res)
+                }) .catch(() => {})
+            },
         }
     }
 </script>

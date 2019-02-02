@@ -48,29 +48,18 @@ const frameIn = [
   },
   demo
 ]
-
 /**
- * 在主框架之外显示
+ * 在主框架之外显示 登录
  */
 const frameOut = [
-  // 登录
-  {
-    path: '/login',
-    name: 'login',
-    component: () => import('@/pages/login')
-  }
+    { path: '/login',name: 'login',component: () => import('@/pages/login')}
 ]
 
 /**
- * 错误页面
+ * 错误页面 404
  */
 const errorPage = [
-  // 404
-  {
-    path: '*',
-    name: '404',
-    component: () => import('@/pages/error-page-404')
-  }
+    { path: '*',name: '404', component: () => import('@/pages/error-page-404') }
 ]
 
 // 导出需要显示菜单的
