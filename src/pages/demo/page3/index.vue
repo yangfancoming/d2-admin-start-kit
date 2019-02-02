@@ -1,39 +1,39 @@
 <template>
-  <d2-container :filename="filename">
-    <template slot="header">Page 3 header</template>
+    <d2-container :filename="filename">
+        <template slot="header">Page 3 header</template>
 
+        <el-button size="mini" type="primary"  @click="ajax1">
+            请求 mock 数据1
+        </el-button>
 
-      <el-select v-model="value" placeholder="请选择">
-          <el-option  v-for="item in options" :key="item.value" :label="item.label" :value="item.value"/>
-      </el-select>
+        <el-select v-model="value" placeholder="请选择">
+            <el-option  v-for="item in options" :key="item.value" :label="item.label" :value="item.value"/>
+        </el-select>
 
-  </d2-container>
+    </d2-container>
 </template>
 
 <script>
-export default {
-  name: 'page3',
-  data () {
-    return {
-      filename: __filename,
-        options: [{
-            value: '选项1',
-            label: '黄金糕'
-        }, {
-            value: '选项2',
-            label: '双皮奶'
-        }, {
-            value: '选项3',
-            label: '蚵仔煎'
-        }, {
-            value: '选项4',
-            label: '龙须面'
-        }, {
-            value: '选项5',
-            label: '北京烤鸭'
-        }],
-        value: ''
+    import * as mockService from '@api/demo.plugins.mock.ajax'
+    export default {
+        name: 'page3',
+        data () {
+            return {
+                filename: __filename,
+                value: '',
+                options:''
+            }
+        },
+        methods: {
+            ajax1 () {
+                mockService.test2()
+                    .then(res => {
+                        console.log(res)
+                        this.options = res.options.select;
+                        this.value = res.options.value;
+                    })
+                    .catch(() => {})
+            },
+        }
     }
-  }
-}
 </script>

@@ -39,17 +39,24 @@ const haha = Mock.mock({
     }]
 })
 
+const options = Mock.mock({
+    'select|3-6': [{'value|+1': 1,'label': '@CNAME'}],
+    'value|0-2': 0,   // 18至28以内随机整数, 0只是用来确定类型
+})
+
 export default [
     {
         path: '/api/mock/test1',  method: 'get',
         handle () { return {  code: 0,msg: '获取数据成功',data: { mockData }}}
     },
-
     {
         path: '/api/demo/plugins/mock/ajax',method: 'get',
         handle () { return { code: 0,msg: '获取数据成功',data: { haha }}}
     },
-
+    {
+        path: '/api/mock/test2',method: 'get',
+        handle () { return { code: 0,msg: '获取数据成功',data: { options }}}
+    },
     // 这种 方式只有一层目录  接收方 接收方式： res.list[0]
     {
         path: '/api/demo/plugins/mock/test',
